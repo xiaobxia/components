@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../../lib/jquery-3.1.0.min.js"></script>
+  <script src="../src/jqueryCountdown.js"></script>
+</head>
+<body>
+  <div class="text">获取验证码</div>
+  <script>
+    var countdown = new Countdown({
+      seconds: 10,
+      onStart: function (nowSecond) {
+        $('.text').text(nowSecond);
+        $('.text').addClass('timing');
+      },
+      onChange: function (nowSecond) {
+        $('.text').text(nowSecond);
+      },
+      onEnd: function () {
+        $('.text').text('获取验证码');
+        $('.text').removeClass('timing');
+      }
+    });
+    $('.text').on('click', function () {
+      if (!$(this).hasClass('timing')) {
+        countdown.start();
+      }
+    })
+  </script>
+</body>
+</html>
